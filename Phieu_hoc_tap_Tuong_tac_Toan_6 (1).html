@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phiếu giao bài về nhà · Toán 6</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font: 100%/1.45 Arial, sans-serif;
+      color: #102958;
+      background: linear-gradient(180deg, #89def6 0%, #e8fafc 55%, #e3f7d4 100%);
+      min-height: 100%;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; }
+    main { width: calc(100% - 1.125rem); max-width: 73rem; margin-inline: auto; }
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      padding: 1.2rem .8rem;
+      min-height: 7.65rem;
+      border: .375rem solid white;
+      border-radius: 2.15rem;
+      background: linear-gradient(105deg, #30981d, #7ac735);
+      box-shadow: 0 .43rem #a7d96a;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(1.7rem, 4.9vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: .01em;
+      text-shadow: 0 3px 1px #285222;
+    }
+    .sun {
+      --rays: polygon(50% 0, 59% 16%, 73% 7%, 76% 26%, 94% 25%, 88% 41%, 100% 50%, 86% 59%, 94% 75%, 75% 74%, 73% 94%, 58% 84%, 50% 100%, 40% 84%, 25% 94%, 24% 75%, 5% 75%, 13% 59%, 0 50%, 13% 41%, 6% 25%, 25% 26%, 26% 7%, 41% 16%);
+      position: relative;
+      flex: 0 0 auto;
+      width: clamp(2.2rem, 5.6vw, 4.1rem);
+      aspect-ratio: 1;
+      background: #101810;
+      clip-path: var(--rays);
+    }
+    .sun::after { position: absolute; inset: 13%; content: ""; clip-path: var(--rays); background: #ffdb04; }
+    .worksheet {
+      margin-top: 1.17rem;
+      padding: 1.75rem 1.55rem 2.5rem;
+      border: .3125rem solid #f5c33a;
+      border-radius: 2rem;
+      background: #fcfbef;
+    }
+    .instructions { margin: 0 0 1.48rem; text-align: center; }
+    .instructions h2 { margin: 0; font-size: clamp(1.14rem, 2.48vw, 1.86rem); line-height: 1.38; }
+    .identity { display: grid; grid-template-columns: 2fr 1fr; gap: .95rem; margin-bottom: 1.55rem; font-size: 1.2rem; }
+    label { display: block; font-weight: 700; }
+    input, textarea {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      min-height: 3.15rem;
+      margin-top: .38rem;
+      padding: .55rem .75rem;
+      border: 2px solid #96acc5;
+      border-radius: .8rem;
+      background: #fff;
+      color: #102958;
+      font: inherit;
+      font-weight: 400;
+    }
+    input::placeholder { color: #626d7b; opacity: 1; }
+    input:focus-visible, button:focus-visible, textarea:focus-visible { outline: 3px solid #145ba1; outline-offset: 2px; }
+    .identity input { border-color: #96bbcf; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .92rem; }
+    .card { padding: 1rem 1rem 1.9rem; border: 3px solid var(--edge); border-radius: 1.4rem; background: var(--tile); }
+    .square-card { --pill: #d82869; --fill: #fbcfe0; --tile: #fceff5; --edge: #ff90bb; }
+    .rect-card { --pill: #057bae; --fill: #bce8fa; --tile: #e5f7fc; --edge: #6bcceb; }
+    .trapezoid-card { --pill: #3c8526; --fill: #dfffc3; --tile: #edf9df; --edge: #98d465; }
+    .tile h3 { margin: 0; padding: .52rem .35rem; border-radius: 999px; background: var(--pill); color: white; text-align: center; font-size: clamp(1.13rem, 2.15vw, 1.56rem); line-height: 1.25; }
+    .diagram { position: relative; width: 15rem; height: 9.75rem; margin: .6rem auto .4rem; color: #115ba5; font-size: 1.25rem; font-weight: 750; font-style: italic; }
+    .diagram span { position: absolute; }
+    .shape { border: 3px solid #102958; background: var(--fill); }
+    .square { width: 7.2rem; height: 7.2rem; top: 1.25rem; left: 4.58rem; }
+    .rect { width: 12rem; height: 6.1rem; top: 1.62rem; left: 2.23rem; }
+    .trapezoid { top: 1.43rem; left: .63rem; width: 14rem; height: 6.2rem; background: #102958; clip-path: polygon(28% 0, 72% 0, 100% 100%, 0 100%); }
+    .trapezoid::after { position: absolute; inset: 0; content: ""; background: var(--fill); clip-path: polygon(28.8% 3%, 71.2% 3%, 97.55% 97%, 2.45% 97%); }
+    .height { height: 5.92rem; top: 1.58rem; left: 4.55rem; border-left: 2px dashed #1769b5; }
+    .right-angle { width: .82rem; height: .75rem; top: 6.74rem; left: 4.55rem; border-top: 2px solid #1769b5; border-right: 2px solid #1769b5; }
+    .formulas { display: grid; gap: .63rem; }
+    .formula { font-size: 1.12rem; }
+    .formula input { font-size: 1.25rem; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 1.6rem; }
+    button {
+      min-height: 3.2rem;
+      border: 0;
+      border-radius: 1rem;
+      padding: .6rem 1.2rem;
+      background: #407f36;
+      color: #fff;
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+    }
+    button[value="download"] { background: #1268b5; }
+    button[type="reset"] { background: #965c17; }
+    button:hover { filter: brightness(.9); }
+    .status { margin: .6rem 0 0; text-align: center; font-weight: 700; }
+    .status:empty { margin: 0; }
+    .submission { margin-top: .8rem; }
+    .guide { margin: 1.24rem 0 0; color: #334a71; font-size: .95rem; line-height: 1.6; }
+    footer { padding: .72rem .35rem .25rem; color: #355779; font-size: .875rem; text-align: center; }
+    @media (max-width: 58rem) {
+      .worksheet { padding-inline: 1rem; }
+      .card { padding-inline: .65rem; }
+      .diagram { transform: scale(.86); transform-origin: 50% 50%; }
+    }
+    @media (max-width: 52rem) {
+      .cards { grid-template-columns: minmax(0, 1fr); }
+      .card { padding: .9rem; }
+      .diagram { transform: none; }
+      .hero { min-height: 5.6rem; gap: .55rem; border-width: .25rem; border-radius: 1.4rem; }
+      .worksheet { padding: 1rem .75rem 1.4rem; border-width: .22rem; border-radius: 1.4rem; }
+      .identity { font-size: 1rem; gap: .6rem; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+      .formula input { font-size: 1rem; }
+    }
+    @media (max-width: 23rem) {
+      .diagram { width: 14rem; transform: translateX(-.3rem); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <span class="sun" aria-hidden="true"></span>
+      <h1>PHIẾU GIAO BÀI VỀ NHÀ</h1>
+    </header>
+
+    <form id="worksheet" class="worksheet">
+      <div class="instructions">
+        <h2>Dựa vào kiến thức đã học ở tiểu học, em hãy nêu công thức tính chu vi và diện tích các hình sau:</h2>
+      </div>
+      <div class="identity">
+        <label>Họ và tên học sinh
+          <input name="student" placeholder="Nhập họ và tên" autocomplete="name" maxlength="80" required>
+        </label>
+        <label>Lớp
+          <input name="classroom" placeholder="Ví dụ: 6A1" autocomplete="off" maxlength="15" required>
+        </label>
+      </div>
+
+
+      <div class="cards">
+        <section class="card square-card" aria-labelledby="square-title">
+          <div class="tile">
+            <h3 id="square-title">Hình vuông</h3>
+            <div class="diagram" role="img" aria-label="Hình vuông có cạnh a">
+              <span class="shape square"></span>
+              <span style="left:3.55rem;top:3.8rem">a</span>
+            </div>
+          </div>
+          <div class="formulas">
+            <label class="formula"><span>1. Chu vi hình vuông là:</span><input name="squareC" placeholder="C = ..." aria-label="Hình vuông, chu vi C" aria-describedby="formula-hint" spellcheck="false" autocapitalize="off" maxlength="70" required></label>
+            <label class="formula"><span>2. Diện tích hình vuông là:</span><input name="squareS" placeholder="S = ..." aria-label="Hình vuông, diện tích S" aria-describedby="formula-hint" spellcheck="false" autocapitalize="off" maxlength="70" required></label>
+          </div>
+        </section>
+
+        <section class="card rect-card" aria-labelledby="rect-title">
+          <div class="tile">
+            <h3 id="rect-title">Hình chữ nhật</h3>
+            <div class="diagram" role="img" aria-label="Hình chữ nhật có hai cạnh kề a và b">
+              <span class="shape rect"></span>
+              <span style="left:1.1rem;top:3.8rem">a</span>
+              <span style="left:7.83rem;top:7.7rem">b</span>
+            </div>
+          </div>
+          <div class="formulas">
+            <label class="formula"><span>1. Chu vi hình chữ nhật là:</span><input name="rectC" placeholder="C = ..." aria-label="Hình chữ nhật, chu vi C" aria-describedby="formula-hint" spellcheck="false" autocapitalize="off" maxlength="70" required></label>
+            <label class="formula"><span>2. Diện tích hình chữ nhật là:</span><input name="rectS" placeholder="S = ..." aria-label="Hình chữ nhật, diện tích S" aria-describedby="formula-hint" spellcheck="false" autocapitalize="off" maxlength="70" required></label>
+          </div>
+        </section>
+
+        <section class="card trapezoid-card" aria-labelledby="trapezoid-title">
+          <div class="tile">
+            <h3 id="trapezoid-title">Hình thang</h3>
+            <div class="diagram" role="img" aria-label="Hình thang có hai đáy a và b, hai cạnh bên c và d, chiều cao h">
+              <span class="trapezoid"></span><span class="height"></span><span class="right-angle"></span>
+              <span style="left:7.41rem;top:-.22rem">a</span>
+              <span style="left:7.28rem;top:7.72rem">b</span>
+              <span style="left:1.52rem;top:3.15rem">c</span>
+              <span style="left:13.7rem;top:3.08rem">d</span>
+              <span style="left:5.17rem;top:3.7rem">h</span>
+            </div>
+          </div>
+          <div class="formulas">
+            <label class="formula"><span>1. Chu vi hình thang là:</span><input name="trapezoidC" placeholder="C = ..." aria-label="Hình thang, chu vi C" aria-describedby="formula-hint" spellcheck="false" autocapitalize="off" maxlength="70" required></label>
+            <label class="formula"><span>2. Diện tích hình thang là:</span><input name="trapezoidS" placeholder="S = ..." aria-label="Hình thang, diện tích S" aria-describedby="formula-hint" spellcheck="false" autocapitalize="off" maxlength="70" required></label>
+          </div>
+        </section>
+      </div>
+
+      <div class="actions">
+        <button type="submit" value="copy"><span aria-hidden="true">📋</span> Sao chép bài làm</button>
+        <button type="submit" value="download"><span aria-hidden="true">⬇</span> Tải bài làm</button>
+        <button type="reset"><span aria-hidden="true">⟳</span> Làm lại</button>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+      <div class="submission" id="manual-copy" hidden>
+        <label for="submission-text">Bài làm để sao chép</label>
+        <textarea id="submission-text" readonly rows="8"></textarea>
+      </div>
+      <p class="guide" id="formula-hint"><strong>Hướng dẫn:</strong> Em nhập họ tên, lớp và điền phần công thức sau dấu bằng vào 6 ô. Có thể gõ <strong>^2</strong> để viết số mũ 2. Khi hoàn thành, bấm <strong>Sao chép bài làm</strong> để dán lên Padlet của lớp, hoặc <strong>Tải bài làm</strong> để lưu tệp gửi cho giáo viên.</p>
+    </form>
+    <footer>Toán 6 • Phiếu hoạt động tương tác • Dùng được trên điện thoại và máy tính</footer>
+  </main>
+  <script>
+    const worksheet = document.querySelector("#worksheet");
+    const status = document.querySelector("#status");
+    const manualCopy = document.querySelector("#manual-copy");
+    const submissionText = document.querySelector("#submission-text");
+
+    const fields = Array.from(worksheet.querySelectorAll("input"));
+    let revision = 0;
+
+    worksheet.addEventListener("reset", (event) => {
+      if (fields.some((field) => field.value) && !window.confirm("Em có muốn xóa thông tin và câu trả lời để làm lại không?")) {
+        event.preventDefault();
+        return;
+      }
+      revision++;
+      for (const field of fields) field.setCustomValidity("");
+      manualCopy.hidden = true;
+      submissionText.value = "";
+      status.textContent = "";
+      fields[0].focus();
+    });
+
+    worksheet.addEventListener("input", (event) => {
+      revision++;
+      event.target.setCustomValidity("");
+      status.textContent = "";
+      manualCopy.hidden = true;
+    });
+
+    worksheet.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submittedRevision = ++revision;
+      const blank = fields.find((input) => !input.value.trim());
+      if (blank) {
+        blank.setCustomValidity("Em hãy điền vào ô này.");
+        blank.reportValidity();
+        return;
+      }
+
+      const answers = Object.fromEntries(
+        fields.map((input) => [input.name, input.value.trim()])
+      );
+      const result = [
+        "TOÁN 6 · CHU VI VÀ DIỆN TÍCH",
+        "Họ và tên: " + answers.student,
+        "Lớp: " + answers.classroom,
+        "",
+        "Hình vuông — C = " + answers.squareC + " | S = " + answers.squareS,
+        "Hình chữ nhật — C = " + answers.rectC + " | S = " + answers.rectS,
+        "Hình thang — C = " + answers.trapezoidC + " | S = " + answers.trapezoidS
+      ].join("\n");
+      manualCopy.hidden = true;
+
+      if (event.submitter?.value === "download") {
+        const file = new Blob(["\uFEFF", result], { type: "text/plain;charset=utf-8" });
+        const url = URL.createObjectURL(file);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "Bai_lam_Toan_6.txt";
+        document.body.append(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        status.textContent = "Em có thể đính kèm tệp bài làm khi nộp.";
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(result);
+        if (submittedRevision !== revision) return;
+        status.textContent = "Đã sao chép bài làm. Em có thể dán bài vào Padlet theo hướng dẫn của cô.";
+      } catch {
+        if (submittedRevision !== revision) return;
+        submissionText.value = result;
+        manualCopy.hidden = false;
+        status.textContent = "Em hãy sao chép bài làm trong ô bên dưới.";
+        submissionText.focus();
+        submissionText.select();
+      }
+    });
+  </script>
+</body>
+</html>
